@@ -39,18 +39,15 @@ class Program
             Array.Sort(x_used);
             int first_x = x_used[0];
 
-            both_used = both_used.Append(x_move).ToArray();
-            Array.Sort(both_used);
-            int last = both_used[both_used.Length-1];
+            int sum = x_used.Length + o_used.Length;
 
-            if (last == 9) {
+            if (sum == 9) {
                 no_win = true;
             }
 
             Console.WriteLine("\n\n\n");
 
-            foreach (int i in x_used) {
-                int num = i + 1;
+            foreach (int num in x_used) {
                 if (first_x + 1 == num){
 //                    pr.check(num, x_used);
                     foreach (int num2 in x_used){
@@ -91,13 +88,9 @@ class Program
                 Array.Sort(o_used);
                 int first_o = o_used[0];
 
-                both_used = both_used.Append(x_move).ToArray();
-                Array.Sort(both_used);
-
                 Console.WriteLine("\n\n\n");
 
-                foreach (int i in o_used) {
-                    int num = i + 1;
+                foreach (int num in o_used) {
                     if (first_o + 1 == num){
                         foreach (int num2 in o_used){
                             if (first_o + 2 == num2) {
@@ -121,5 +114,18 @@ class Program
                     }
                 }
         }   }
+            Console.WriteLine("\nPlaying Board\tReference Board\n");
+            Console.WriteLine($"  {x_and_o[0]} | {x_and_o[1]} | {x_and_o[2]} \t   {numbers[0]} | {numbers[1]} | {numbers[2]}\n ---|---|--- \t  ---|---|---\n  {x_and_o[3]} | {x_and_o[4]} | {x_and_o[5]} \t   {numbers[3]} | {numbers[4]} | {numbers[5]}");
+            Console.WriteLine($" ---|---|--- \t  ---|---|---\n  {x_and_o[6]} | {x_and_o[7]} | {x_and_o[8]} \t   {numbers[6]} | {numbers[7]} | {numbers[8]}");
+            
+            if (x_win == true) {
+                Console.WriteLine("X wins!");
+            }
+            else if (o_win == true) {
+                Console.WriteLine("O wins!");
+            }
+            else if (no_win == true) {
+                Console.WriteLine("Draw, everyone's a winner!");
+            }
     }   
 }   
